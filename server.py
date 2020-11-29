@@ -11,6 +11,7 @@ def createServer(req_cnt):
         path = message.split()[1]
         
         if path == b"/favicon.ico":
+            clientsocket.send("".encode())
             clientsocket.shutdown(SHUT_WR)
             clientsocket.close()
             continue
