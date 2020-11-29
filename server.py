@@ -11,21 +11,21 @@ def createServer(req_cnt):
         path = message.split()[1]
         
         if path == b"/favicon.ico":
-            clientsocket.send("".encode())
-            clientsocket.shutdown(SHUT_WR)
-            clientsocket.close()
-            continue
-
+            msg = "HTTP/1.1 200 OK\n Content-Type: type=image/x-icon \n"
+            clientsocket.send(msg.encode())
+            pass
+    
         elif path == b"/admin":
             msg = "HTTP/1.1 200 OK\n Content-Type: text/html \n\n <html><body>This is admin page, no one should be here</body></html>\n"
             clientsocket.send(msg.encode())
         else:
             msg = f"HTTP/1.1 200 OK\n Content-Type: text/html \n\n <html><body>Hello from server ID={str(os.getenv('PORT'))} <br> REQ_COUNT={req_cnt} </body></html>\n"
             clientsocket.send(msg.encode())
+            req_cnt += 1
+
 
        	clientsocket.shutdown(SHUT_WR)
         clientsocket.close()
-        req_cnt += 1
 
     serversocket.close()
 
