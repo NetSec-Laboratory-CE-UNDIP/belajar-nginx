@@ -17,7 +17,7 @@ def createServer(req_cnt):
             msg = "HTTP/1.1 200 OK\n Content-Type: text/html \n\n <html><body>This is admin page, no one should be here</body></html>\n"
             clientsocket.send(msg.encode())
         else:
-            msg = f"HTTP/1.1 200 OK\n Content-Type: text/html \n\n <html><body>Hello from server ID={str(os.getenv('PORT'))} <br> REQ_COUNT={req_cnt} </body></html>\n"
+            msg = f"HTTP/1.1 200 OK\n Content-Type: text/html \n\n <html><body>Hello from server ID={str(os.getenv('PORT'))} <br> REQUEST_COUNT={req_cnt} </body></html>\n"
             clientsocket.send(msg.encode())
 
        	clientsocket.shutdown(SHUT_WR)
