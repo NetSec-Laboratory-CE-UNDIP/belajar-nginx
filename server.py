@@ -10,19 +10,15 @@ def createServer(req_cnt):
         message = clientsocket.recv(4096)
         path = message.split()[1]
         
-        if path == b"/favicon.ico":
-            msg = "HTTP/1.1 200 OK\n Content-Type: type=image/x-icon \n"
-            clientsocket.send(msg.encode())
-            pass
+        if path == b"/":
+            req_cnt += 1
     
-        elif path == b"/admin":
+        if path == b"/admin":
             msg = "HTTP/1.1 200 OK\n Content-Type: text/html \n\n <html><body>This is admin page, no one should be here</body></html>\n"
             clientsocket.send(msg.encode())
         else:
             msg = f"HTTP/1.1 200 OK\n Content-Type: text/html \n\n <html><body>Hello from server ID={str(os.getenv('PORT'))} <br> REQ_COUNT={req_cnt} </body></html>\n"
             clientsocket.send(msg.encode())
-            req_cnt += 1
-
 
        	clientsocket.shutdown(SHUT_WR)
         clientsocket.close()
