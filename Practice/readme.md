@@ -1,6 +1,7 @@
-# Practive - Load Balancing Method
+# Practice - Load Balancing 
 
-1. Coba lakukan weighted load balancing (http://nginx.org/en/docs/http/load_balancing.html#nginx_weighted_load_balancing) Dengan konfigurasi berikut
+#### Weighted load balancing
+Coba lakukan weighted load balancing (http://nginx.org/en/docs/http/load_balancing.html#nginx_weighted_load_balancing) Dengan konfigurasi berikut
 
 - 50 % request masuk ke server 1
 - 20 % request masuk ke server 2
